@@ -56,7 +56,7 @@
   }
   .nav-logo {
     font-family: 'Shippori Mincho', serif;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 600;
     color: var(--pink-deep);
     letter-spacing: 0.1em;
@@ -65,7 +65,7 @@
   .nav-links a {
     text-decoration: none;
     color: var(--text-mid);
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 0.12em;
     transition: color 0.3s;
     position: relative;
@@ -101,14 +101,8 @@
     z-index: 0;
   }
   .header-deco::after {
-    content: '∞';
-    position: absolute;
-    font-size: 40vw;
-    color: rgba(232,131,159,0.06);
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: serif;
-    line-height: 1;
+    content: '';
+    display: none;
   }
   .petal {
     position: absolute;
@@ -128,13 +122,36 @@
     position: relative;
     z-index: 1;
     animation: fadeUp 1.2s ease forwards;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1000px;
+    width: 100%;
+  }
+  .hero-text {
+    flex: 1;
+    text-align: center;
+  }
+  .hero-image {
+    flex-shrink: 0;
+    width: 320px;
+    height: 320px;
+    border: 3px solid var(--pink-medium);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(232,131,159,0.15);
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
   }
   .hero-eyebrow {
-    font-size: 12px;
+    font-size: 14px;
     letter-spacing: 0.35em;
     color: var(--pink-deep);
     margin-bottom: 24px;
@@ -163,7 +180,7 @@
     margin: 0 auto 48px;
   }
   .hero-tagline {
-    font-size: 16px;
+    font-size: 18px;
     color: var(--text-mid);
     font-weight: 300;
     letter-spacing: 0.15em;
@@ -191,7 +208,7 @@
     border: 1px solid var(--pink-deep);
     color: var(--pink-deep);
     text-decoration: none;
-    font-size: 13px;
+    font-size: 15px;
     letter-spacing: 0.2em;
     transition: all 0.4s;
     position: relative;
@@ -219,7 +236,7 @@
     margin: 0 auto;
   }
   .section-label {
-    font-size: 11px;
+    font-size: 13px;
     letter-spacing: 0.4em;
     color: var(--pink-main);
     text-transform: uppercase;
@@ -251,7 +268,7 @@
     max-width: 680px;
     margin: 0 auto;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
     color: var(--text-mid);
     font-weight: 300;
     line-height: 2.2;
@@ -271,7 +288,9 @@
   .activity-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 48px;
+    max-width: 1100px;
+    margin: 0 auto;
   }
   .activity-card {
     background: white;
@@ -295,7 +314,7 @@
 
   .activity-photo {
     width: 100%;
-    height: 170px;
+    height: 220px;
     background: linear-gradient(135deg, var(--pink-light) 0%, var(--pink-medium) 100%);
     display: flex;
     flex-direction: column;
@@ -319,15 +338,15 @@
     padding: 2px 10px;
     border-radius: 20px;
   }
-  .activity-body { padding: 24px 24px 28px; }
+  .activity-body { padding: 28px 28px 34px; }
   .activity-card h3 {
     font-family: 'Shippori Mincho', serif;
-    font-size: 16px;
+    font-size: 18px;
     color: var(--text-dark);
     letter-spacing: 0.1em;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
-  .activity-card p { font-size: 13px; color: var(--text-light); line-height: 1.9; }
+  .activity-card p { font-size: 14px; color: var(--text-light); line-height: 2.0; }
 
   /* ─── ACHIEVEMENTS（イベントギャラリー） ─── */
   .achievements-bg {
@@ -389,8 +408,8 @@
     transition: transform 0.4s;
   }
   .event-gallery-item:hover .event-overlay { transform: translateY(0); }
-  .event-overlay-title { font-size: 13px; color: white; font-family: 'Shippori Mincho', serif; letter-spacing: 0.1em; }
-  .event-overlay-date { font-size: 11px; color: var(--pink-medium); margin-top: 4px; letter-spacing: 0.1em; }
+  .event-overlay-title { font-size: 15px; color: white; font-family: 'Shippori Mincho', serif; letter-spacing: 0.1em; }
+  .event-overlay-date { font-size: 13px; color: var(--pink-medium); margin-top: 4px; letter-spacing: 0.1em; }
 
   .photo-guide {
     max-width: 960px;
@@ -441,9 +460,24 @@
   }
   .member-photo-placeholder span:first-child { font-size: 34px; }
   .member-photo-placeholder span:last-child { font-size: 10px; color: var(--pink-deep); letter-spacing: 0.1em; }
-  .member-name { font-family: 'Shippori Mincho', serif; font-size: 17px; font-weight: 600; color: var(--text-dark); letter-spacing: 0.1em; margin-bottom: 6px; }
-  .member-role { font-size: 11px; color: var(--pink-deep); letter-spacing: 0.2em; margin-bottom: 14px; }
-  .member-bio { font-size: 13px; color: var(--text-light); line-height: 1.9; }
+  .member-name { font-family: 'Shippori Mincho', serif; font-size: 19px; font-weight: 600; color: var(--text-dark); letter-spacing: 0.1em; margin-bottom: 6px; }
+  .member-role { font-size: 13px; color: var(--pink-deep); letter-spacing: 0.2em; margin-bottom: 14px; }
+  .member-bio { font-size: 15px; color: var(--text-light); line-height: 1.9; }
+  .member-sns { margin-top: 16px; }
+  .member-sns a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .member-sns a:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(220,39,67,0.35); }
+  .member-sns a svg { width: 20px; height: 20px; fill: white; }
 
   /* ─── MESSAGE ─── */
   .message-wrap {
@@ -472,34 +506,91 @@
     background: radial-gradient(ellipse at bottom right, rgba(247,197,213,0.3), transparent);
     pointer-events: none;
   }
-  .message-text { font-size: 15px; color: var(--text-mid); line-height: 2.3; letter-spacing: 0.06em; font-weight: 300; position: relative; z-index: 1; }
-  .message-sign { margin-top: 40px; text-align: right; font-size: 13px; color: var(--text-light); letter-spacing: 0.1em; }
-  .message-sign strong { display: block; font-family: 'Shippori Mincho', serif; font-size: 18px; color: var(--text-dark); margin-top: 6px; }
+  .message-text { font-size: 17px; color: var(--text-mid); line-height: 2.3; letter-spacing: 0.06em; font-weight: 300; position: relative; z-index: 1; }
+  .message-sign { margin-top: 40px; text-align: right; font-size: 15px; color: var(--text-light); letter-spacing: 0.1em; }
+  .message-sign strong { display: block; font-family: 'Shippori Mincho', serif; font-size: 20px; color: var(--text-dark); margin-top: 6px; }
+
+  /* ─── PHOTO GALLERY ─── */
+  .photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .photo-gallery-item {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 1px solid rgba(232,131,159,0.18);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .photo-gallery-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(196,94,122,0.15);
+  }
+  .photo-gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s;
+  }
+  .photo-gallery-item:hover img { transform: scale(1.05); }
+
+  /* ─── LIGHTBOX ─── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 20px; right: 30px;
+    font-size: 36px;
+    color: white;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 1001;
+  }
 
   /* ─── FAQ ─── */
   .faq-list { max-width: 720px; margin: 0 auto; }
   .faq-item { border-bottom: 1px solid rgba(232,131,159,0.2); padding: 30px 0; cursor: pointer; }
   .faq-q { display: flex; align-items: flex-start; gap: 16px; }
-  .faq-q-mark { font-size: 22px; color: var(--pink-deep); font-weight: 700; flex-shrink: 0; font-family: serif; line-height: 1.4; }
-  .faq-q-text { font-family: 'Shippori Mincho', serif; font-size: 16px; color: var(--text-dark); letter-spacing: 0.08em; font-weight: 500; flex: 1; }
-  .faq-toggle { font-size: 20px; color: var(--pink-main); flex-shrink: 0; transition: transform 0.3s; line-height: 1.4; }
+  .faq-q-mark { font-size: 24px; color: var(--pink-deep); font-weight: 700; flex-shrink: 0; font-family: serif; line-height: 1.4; }
+  .faq-q-text { font-family: 'Shippori Mincho', serif; font-size: 18px; color: var(--text-dark); letter-spacing: 0.08em; font-weight: 500; flex: 1; }
+  .faq-toggle { font-size: 22px; color: var(--pink-main); flex-shrink: 0; transition: transform 0.3s; line-height: 1.4; }
   .faq-item.open .faq-toggle { transform: rotate(45deg); }
-  .faq-a { margin-top: 18px; font-size: 14px; color: var(--text-light); line-height: 2; padding-left: 38px; border-left: 2px solid var(--pink-light); display: none; }
+  .faq-a { margin-top: 18px; font-size: 16px; color: var(--text-light); line-height: 2; padding-left: 38px; border-left: 2px solid var(--pink-light); display: none; }
   .faq-item.open .faq-a { display: block; }
 
   /* ─── CONTACT ─── */
   .contact-bg { background: linear-gradient(135deg, #fde8ef 0%, #fff5f7 100%); padding: 100px 20px; }
   .contact-wrap { max-width: 580px; margin: 0 auto; text-align: center; }
   .contact-info { margin: 40px 0; display: flex; flex-direction: column; gap: 16px; }
-  .contact-row { display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 14px; color: var(--text-mid); letter-spacing: 0.08em; }
-  .contact-row-label { font-size: 11px; letter-spacing: 0.2em; color: var(--pink-deep); min-width: 60px; text-align: right; }
+  .contact-row { display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 16px; color: var(--text-mid); letter-spacing: 0.08em; }
+  .contact-row-label { font-size: 13px; letter-spacing: 0.2em; color: var(--pink-deep); min-width: 60px; text-align: right; }
   .btn-contact {
     display: inline-block;
     padding: 18px 60px;
     background: linear-gradient(135deg, var(--pink-deep), var(--pink-main));
     color: white;
     text-decoration: none;
-    font-size: 13px;
+    font-size: 15px;
     letter-spacing: 0.25em;
     transition: all 0.4s;
     margin-top: 20px;
@@ -508,8 +599,8 @@
   .btn-contact:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(196,94,122,0.4); }
 
   /* ─── FOOTER ─── */
-  footer { background: var(--text-dark); color: rgba(255,255,255,0.4); text-align: center; padding: 50px 20px; font-size: 12px; letter-spacing: 0.15em; }
-  footer .footer-logo { font-family: 'Shippori Mincho', serif; font-size: 18px; color: rgba(255,255,255,0.7); margin-bottom: 20px; display: block; letter-spacing: 0.15em; }
+  footer { background: var(--text-dark); color: rgba(255,255,255,0.4); text-align: center; padding: 50px 20px; font-size: 14px; letter-spacing: 0.15em; }
+  footer .footer-logo { font-family: 'Shippori Mincho', serif; font-size: 20px; color: rgba(255,255,255,0.7); margin-bottom: 20px; display: block; letter-spacing: 0.15em; }
 
   /* ─── REVEAL ─── */
   .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
@@ -517,8 +608,12 @@
 
   @media (max-width: 760px) {
     .nav-links { display: none; }
+    .hero-content { flex-direction: column; gap: 40px; }
+    .hero-text { text-align: center; }
+    .hero-image { width: 240px; height: 240px; }
     .activity-grid { grid-template-columns: 1fr; }
     .event-gallery { grid-template-columns: repeat(2, 1fr); }
+    .photo-gallery { grid-template-columns: repeat(2, 1fr); }
     .members-grid { grid-template-columns: 1fr; gap: 48px; }
     .message-wrap { padding: 50px 30px; }
   }
@@ -535,9 +630,9 @@
   <ul class="nav-links">
     <li><a href="#philosophy">理念</a></li>
     <li><a href="#activities">活動</a></li>
-    <li><a href="#achievements">実績</a></li>
     <li><a href="#members">メンバー</a></li>
-    <li><a href="#message">代表メッセージ</a></li>
+    <!-- <li><a href="#message">代表メッセージ</a></li> -->
+    <li><a href="#photos">写真</a></li>
     <li><a href="#faq">FAQ</a></li>
     <li><a href="#contact">お問い合わせ</a></li>
   </ul>
@@ -552,19 +647,22 @@
     <div class="petal"></div>
   </div>
   <div class="hero-content">
-    <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAAfSgAwAEAAAAAQAAAfQAAAAA/+0AOFBob3Rvc2hvcCAzLjAAOEJJTQQEAAAAAAAAOEJJTQQlAAAAAAAQ1B2M2Y8AsgTpgAmY7PhCfv/AABEIAfQB9AMBIgACEQEDEQH/xAAfAAABBQEBAQEBAQAAAAAAAAAAAQIDBAUGBwgJCgv/xAC1EAACAQMDAgQDBQUEBAAAAX0BAgMABBEFEiExQQYTUWEHInEUMoGRoQgjQrHBFVLR8CQzYnKCCQoWFxgZGiUmJygpKjQ1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4eLj5OXm5+jp6vHy8/T19vf4+fr/xAAfAQADAQEBAQEBAQEBAAAAAAAAAQIDBAUGBwgJCgv/xAC1EQACAQIEBAMEBwUEBAABAncAAQIDEQQFITEGEkFRB2FxEyIygQgUQpGhscEJIzNS8BVictEKFiQ04SXxFxgZGiYnKCkqNTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqCg4SFhoeIiYqSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2dri4+Tl5ufo6ery8/T19vf4+fr/2wBDAAICAgICAgQCAgQGBAQEBggGBgYGCAoICAgICAoMCgoKCgoKDAwMDAwMDAwODg4ODg4QEBAQEBISEhISEhISEhL/2wBDAQMDAwUEBQgEBAgTDQsNExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExP/3QAEACD/2gAMAwEAAhEDEQA/AP38ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/0P38ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/0f38ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/0v38ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/0/38ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/1P38ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/1f38ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooqNiEG5iABySaAHZ9RSVxOp+PvDGm5Q3Aml6COEbyT6ZHGfqazY/E/i7VRnRdJMano9020Y9dvB/Impco7G6w02uZqy89PzPR92e1FeeLpPj++51DU4rUf3beIN/wCPNgj86efAzyndfapezewk2r+QFPmfRB7KC+Ka+SbPQdw9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1+5l6/ogooornPWCiiigAooooAK+1tKH/Etth/0yT+Qr4tjQyyLGvViAPqa+3Y0WJFiTooAH4cV1YfqeFnL+Bev6E9FFFdJ4IUUUUAFFFFABRRRQB//W/fyiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA8o+LM4h8NJGOskyjHsAT/QV83V7X8Y73fc2enKegaRh9SFX+RrxSuKu7yPq8qhy0U+92FFFFYnoBRRRQAUUUUAbfhy2a81+ytgM7pkz9AQT+gr7K6EGvmH4W2YuvFaTdRbxu/4kbR/Ovp8812Yde7c+bzid6qh2X5jqKKK3PICiiigAooooAKKKKAP/1/38ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAK0skVvEZZWCqoJLE4AA6kmvHtT+LthBdNFp1q1xGDjez+XkjuBtY4+uPpXX/EN5l8I3r25IO1QcehdQ36Zz7V8pVz1qji7I9nLcFTrRdSprrax9T+FfHem+J2NsqmC4UbjGxBz6lTxnHfgGvQMAV8e+EJLiPxPYtbZ3mZQcf3ScN/47mvsDsaulNyWpy5hho0alobMfRRRWpwBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUANI5pTS9eax9a1KLR9Ln1KXGIULY9SOg/E4FJ6ajSu7I+Z/iFqg1TxXcshysGIV/wCAfe/8eJrh6klkeaRppCWZiWJPcnkmo689u7bPt6VNU4RguiCiiipLCiiigAooqSKJ5pVhiBLOQqgdSTwBQB798ItLMOl3Gqvw07hF/wB1OpH1JI/CvZBwM1h+H9LXRNFt9LXnyUAYju3Un8STW2Ohr0YR5UkfGYmr7WpKfdj6KKKo5wooooAKKKKACiiigD//0P38ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAKlxbw3du9rOoeOQFWB6EHgivC9T+EF2Zy2j3CeUTkLNkED0yuc/kK99GQaUmplFS3OihiqlFt03ueY+Dvh/b+G5v7QupBPc4IBAwqA9cdyT6+navTiPamj3ryvXfinpWl3BtLCJrt1OGKsFTPoGwc/gMe9K6gh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KACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/1v38ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/1/38ooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/0P38ooooAKKKKACiiigAooooAKK57xB4fsfE2mNpOoSXEUUhBY2txNayHHYSwPG4B7gMM968B/ZRR4vhneW/mSSCHW9ViRpZGkbZHduqgs5ZmwqgZJJoA+n6iZlVSzHAAySeMCvh7wZoQ+MHwX1j4yalJIPEGqvqF1pd4jsJdPS1lkjtI7dgRsRRErOq4EhZt+7Ndpq3jfWPiT+zpY+Iiz2Vvq2jC91m8gHzQWoh3XSW4ON08gDpH2QEuxBCq4Ox9A+C/Gvhn4h+HovFPg+4N3p87OI5tjormNirFd6qWUMpAYAqccE12NfB3jG78J+F/C3gyD4brr+nabdatptqI0m1JEaylDZiRWkx8y4wE+b0Ne6+F9G8Kz/EZNVtNJ12O7tLMrFqN/PeNblZGw8Gyedstwr/ADR7TwQ25RgCx6lrfi7w34d1DTtK1q8jtrrVpjb2kbn5ppQpYqoGeijkngZAzkgF174t8OWHiS18IXl5Gmp30MlxBbkne8cJUOw7AAsOpGecZwcfMnjfxRZaF8c7S0069hm1aCzudS1a7uonmXT9GtwM29vFEQVkmdkZ3yXO3c2V8tB5EfEHh/xP421nwLpGt317Br0EbvqI0/UJtTg0lSVaxhYQMxRpS2JyBtV23M8m0qBY/R/rzWVqWq6Zo1t9s1e5itYdwXfM6xruY4A3MQMk8AdzXlHw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KACiiigD/9L9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9P9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9T9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9X9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9b9/KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD/9k=" alt="永遠∞愛されママProject広島" class="hero-logo">
-    <span class="hero-eyebrow">Hiroshima / Founded 2020</span>
-    <h1 class="hero-title">
-      永遠<span class="infinity">∞</span>愛されママ<br>Project 広島
-    </h1>
-    <p class="hero-subtitle">— すべてのママが、輝き続けるために —</p>
-    <div class="hero-divider"></div>
-    <p class="hero-tagline">
-      ありのままの自分を愛し、<br>
-      家族に愛され、社会に輝く。<br>
-      そんなママたちを、ここから。
-    </p>
-    <a href="#philosophy" class="btn-primary">プロジェクトについて</a>
+    <div class="hero-text">
+      <span class="hero-eyebrow">Hiroshima / Founded 2026</span>
+      <h1 class="hero-title">
+        永遠<span class="infinity">∞</span>愛されママ<br>Project 広島
+      </h1>
+      <p class="hero-subtitle">— すべてのママが、輝き続けるために —</p>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline">
+        ありのままの自分を愛し、<br>
+        家族に愛され、社会に輝く。<br>
+        最先端のBeauty＆Wellnessで実現。
+      </p>
+    </div>
+    <div class="hero-image">
+      <img src="aisaremamalogo.jpg" alt="永遠∞愛されママProject広島">
+    </div>
   </div>
 </header>
 
@@ -578,9 +676,12 @@
     </div>
     <div class="philosophy-quote reveal">「愛されることは、愛することから始まる」</div>
     <p class="philosophy-text reveal">
-      子育て・家事・仕事——忙しい日々の中で、気づけば自分自身を後回しにしてしまっているママへ。<br><br>
-      私たちは、「ママが自分を愛することが、家族を幸せにする」という信念のもと、広島から全国へ。すべてのママが自分らしく輝き、永遠に愛され続けることを支援するプロジェクトです。<br><br>
-      外見・内面・人間関係——あらゆる角度からのアプローチで、あなたの中に眠る魅力を引き出します。
+      「もっと頑張らなきゃ」「子どものためだから」——<br>
+      忙しい毎日の中で、気づけば自分のことを後回しにしてしまっているママへ。<br>
+      あなたが笑顔でいることが、家族にとっての一番の幸せだと私たちは考えています。<br><br>
+      そんな想いから生まれたのが「永遠∞愛されママProject広島」です。<br><br>
+      私たちは「自分を愛することが、周りを幸せにする」という信念を持っています。<br>
+      最先端のBeauty＆Wellness、新しいワークスタイルを取り入れて、一歩踏み出すあなたと共に歩んでいきます。
     </p>
   </section>
 </div>
@@ -594,147 +695,39 @@
   </div>
   <div class="activity-grid">
 
-    <!--
-      ★ 写真の差し替え方法 ★
-      各カードの .activity-photo 内にある <span> を削除し、
-      以下のように <img> タグを追加してください：
-      <img src="images/activity1.jpg" alt="パーソナルサポート">
-    -->
-
     <div class="activity-card reveal">
       <div class="activity-photo" id="activity-photo-1">
-        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80" alt="パーソナルサポート">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80" alt="パーソナルサポート">
       </div>
       <div class="activity-body">
         <h3>パーソナルサポート</h3>
-        <p>あなたの内面・外見・生き方に寄り添う、完全個別のサポートプログラム。一人ひとりに合わせたプランで理想の自分へ。</p>
+        <p>あなたの内面・外見・生き方に寄り添う、完全個別のサポートプログラム。一人ひとりに合わせたプランで理想の自分へ導きます。</p>
       </div>
     </div>
 
     <div class="activity-card reveal">
       <div class="activity-photo" id="activity-photo-2">
-        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80" alt="健康セミナー">
+        <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80" alt="セミナー・ワークショップ">
       </div>
       <div class="activity-body">
-        <h3>健康セミナー</h3>
-        <p>体の内側から輝くための健康知識をお届け。食事・睡眠・メンタルケアなど、ママに必要な健康の基本を楽しく学べます。</p>
+        <h3>セミナー・ワークショップ</h3>
+        <p>健康・美容・マインドなど多彩なテーマで開催。学びと実践を通じて、ママたちが輝くための知識とスキルを楽しく身につけられます。</p>
       </div>
     </div>
 
     <div class="activity-card reveal">
       <div class="activity-photo" id="activity-photo-3">
-        <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=600&q=80" alt="美容ワークショップ">
+        <img src="https://images.unsplash.com/photo-1553484771-047a44eee27b?w=600&q=80" alt="起業・副業サポート">
       </div>
       <div class="activity-body">
-        <h3>美容ワークショップ</h3>
-        <p>プロによるスキンケア・メイク・ファッションの実践講座。忙しいママのための時短テクニックで、毎日をもっと輝かせます。</p>
-      </div>
-    </div>
-
-    <div class="activity-card reveal">
-      <div class="activity-photo" id="activity-photo-4">
-        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=600&q=80" alt="美容サロン">
-      </div>
-      <div class="activity-body">
-        <h3>美容サロン（自宅 / 出張）</h3>
-        <p>ご自宅や指定の場所へ出張対応のプライベートサロン。忙しくてサロンに行けないママのために、特別な時間をお届けします。</p>
-      </div>
-    </div>
-
-    <div class="activity-card reveal">
-      <div class="activity-photo" id="activity-photo-5">
-        <img src="https://images.unsplash.com/photo-1553484771-047a44eee27b?w=600&q=80" alt="ビジネスコーチング">
-      </div>
-      <div class="activity-body">
-        <h3>ビジネスコーチング</h3>
-        <p>自分らしい働き方・副業・起業を目指すママへ。専任コーチが目標設定から実現まで伴走。夢を仕事にしたい方に。</p>
-      </div>
-    </div>
-
-    <div class="activity-card reveal">
-      <div class="activity-photo" id="activity-photo-6">
-        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&q=80" alt="コミュニティ">
-      </div>
-      <div class="activity-body">
-        <h3>メンバー・お客様コミュニティ</h3>
-        <p>同じ志を持つママたちが繋がれるコミュニティ。悩みを分かち合い励まし合いながら、一緒に成長できる温かな場所です。</p>
+        <h3>起業・副業サポート</h3>
+        <p>自分らしい働き方を実現したいママへ。ビジネスの立ち上げから収益化まで、専任コーチが目標設定から実現まで伴走します。</p>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- ACHIEVEMENTS -->
-<div id="achievements" class="achievements-bg">
-  <section style="max-width: 960px; margin: 0 auto; padding: 0 20px;">
-    <div class="reveal">
-      <span class="section-label" style="color: var(--pink-medium);">Achievements</span>
-      <h2 class="section-title" style="color: white;">これまでの実績</h2>
-      <div class="section-divider"></div>
-    </div>
-
-    <!--
-      ★ イベント写真の差し替え方法 ★
-      各 .event-gallery-item 内の .event-placeholder を削除し、
-      <img src="images/event1.jpg" alt="イベント名"> を追加してください。
-      ホバー時に .event-overlay のテキストが表示されます。
-    -->
-    <div class="event-gallery reveal">
-
-      <div class="event-gallery-item" id="event-photo-1">
-        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="セルフラブセミナー">
-        <div class="event-overlay">
-          <div class="event-overlay-title">セルフラブセミナー vol.1</div>
-          <div class="event-overlay-date">2021年 3月</div>
-        </div>
-      </div>
-
-      <div class="event-gallery-item" id="event-photo-2">
-        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80" alt="美容ワークショップ">
-        <div class="event-overlay">
-          <div class="event-overlay-title">美容ワークショップ</div>
-          <div class="event-overlay-date">2021年 7月</div>
-        </div>
-      </div>
-
-      <div class="event-gallery-item" id="event-photo-3">
-        <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&q=80" alt="ママコミュニティ交流会">
-        <div class="event-overlay">
-          <div class="event-overlay-title">ママコミュニティ交流会</div>
-          <div class="event-overlay-date">2022年 2月</div>
-        </div>
-      </div>
-
-      <div class="event-gallery-item" id="event-photo-4">
-        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80" alt="健康セミナー">
-        <div class="event-overlay">
-          <div class="event-overlay-title">健康セミナー</div>
-          <div class="event-overlay-date">2022年 9月</div>
-        </div>
-      </div>
-
-      <div class="event-gallery-item" id="event-photo-5">
-        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="ビジネスコーチング講座">
-        <div class="event-overlay">
-          <div class="event-overlay-title">ビジネスコーチング講座</div>
-          <div class="event-overlay-date">2023年 4月</div>
-        </div>
-      </div>
-
-      <div class="event-gallery-item" id="event-photo-6">
-        <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=600&q=80" alt="周年記念イベント">
-        <div class="event-overlay">
-          <div class="event-overlay-title">周年記念イベント</div>
-          <div class="event-overlay-date">2024年 1月</div>
-        </div>
-      </div>
-
-    </div>
-    <div class="photo-guide reveal">
-      ※ 各枠に実際のイベント写真を差し替えることができます。写真をご用意の際はお知らせください。
-    </div>
-  </section>
-</div>
 
 <!-- MEMBERS -->
 <section id="members">
@@ -753,25 +746,35 @@
 
     <div class="member-card reveal">
       <div class="member-photo" id="member-photo-1">
-        <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=300&q=80" alt="菅原 真希">
+        <img src="sugamaki.png" alt="菅原 真希">
       </div>
       <div class="member-name">菅原 真希</div>
       <div class="member-role">代表</div>
       <p class="member-bio">「永遠∞愛されママProject広島」を立ち上げた代表。すべてのママが自分らしく輝ける場所をつくりたいという想いで、日々活動を牽引しています。</p>
+      <div class="member-sns">
+        <a href="https://www.instagram.com/sugawara.maki7" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
     </div>
 
     <div class="member-card reveal">
       <div class="member-photo" id="member-photo-2">
-        <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=300&q=80" alt="山下 美里">
+        <img src="yamamiri.png" alt="山下 美里">
       </div>
       <div class="member-name">山下 美里</div>
       <div class="member-role">メンバー</div>
       <p class="member-bio">美容・健康サポートを担当。丁寧なカウンセリングと温かい人柄で、多くのママから厚い信頼を集めています。</p>
+      <div class="member-sns">
+        <a href="https://www.instagram.com/miri_wellbeing" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
     </div>
 
     <div class="member-card reveal">
       <div class="member-photo" id="member-photo-3">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&q=80" alt="菅原 嵩得">
+        <img src="sugatake.png" alt="菅原 嵩得">
       </div>
       <div class="member-name">菅原 嵩得</div>
       <div class="member-role">メンバー</div>
@@ -781,7 +784,7 @@
   </div>
 </section>
 
-<!-- MESSAGE -->
+<!--
 <section id="message" style="padding-bottom: 0;">
   <div class="reveal">
     <span class="section-label">Message</span>
@@ -790,10 +793,13 @@
   </div>
   <div class="message-wrap reveal">
     <p class="message-text">
-      「ちゃんとしなきゃ」「もっと頑張らなきゃ」——そんな言葉が頭の中をぐるぐると駆け巡っていませんか。<br><br>
-      忙しい毎日の中で、気づけば自分のことを一番後回しにしてしまっているママへ。あなたが笑顔でいることが、家族にとっての一番の幸せだと、私は信じています。<br><br>
-      「永遠∞愛されママProject広島」は、そんな想いから生まれました。ここに来てくれたすべてのママに伝えたいのは——あなたは今のままで、十分に素晴らしい存在です。<br><br>
-      一緒に、自分を愛することから始めましょう。
+      かつての私は、「母親なんだから、こうあるべき」という目に見えないルールに縛られていました。<br>
+      自分のことは後回し。オシャレも、やりたいことも、子どもを理由で蓋をしてきました。<br>
+      いつの間にか疲れきった顔。孤独と不安が、私の中にずっとありました。<br><br>
+      転機となったのは、まず自分自身の体と心に丁寧に向き合い始めたことでした。<br>
+      正しい健康知識を取り入れ、自分をいたわる美容の時間を少しずつ持つことで、驚くほど心が軽くなり、失っていた「自分への自信」を取り戻すことができました。<br>
+      ママが健やかで美しく、笑顔でいることは、家族にとっても一番の幸せです。<br><br>
+      「永遠∞愛されママProject広島」では、美容・健康・マインドの3軸から、広島のママたちが内側から品よく輝き続けるお手伝いをしています。
     </p>
     <div class="message-sign">
       代表
@@ -801,6 +807,42 @@
     </div>
   </div>
 </section>
+-->
+
+<!-- PHOTOS -->
+<section id="photos">
+  <div class="reveal">
+    <span class="section-label">Photos</span>
+    <h2 class="section-title">写真</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="photo-gallery reveal">
+    <div class="photo-gallery-item" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&q=80" alt="活動写真1">
+    </div>
+    <div class="photo-gallery-item" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=600&q=80" alt="活動写真2">
+    </div>
+    <div class="photo-gallery-item" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=600&q=80" alt="活動写真3">
+    </div>
+    <div class="photo-gallery-item" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=600&q=80" alt="活動写真4">
+    </div>
+    <div class="photo-gallery-item" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80" alt="活動写真5">
+    </div>
+    <div class="photo-gallery-item" onclick="openLightbox(this)">
+      <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=600&q=80" alt="活動写真6">
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
 
 <!-- FAQ -->
 <section id="faq" style="padding-top: 100px;">
@@ -810,68 +852,51 @@
     <div class="section-divider"></div>
   </div>
   <div class="faq-list reveal">
-
-    <div class="faq-item" onclick="this.classList.toggle('open')">
+  
+  <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">
         <span class="faq-q-mark">Q</span>
-        <span class="faq-q-text">子供連れで参加できますか？</span>
+        <span class="faq-q-text">対象はママだけですか？</span>
         <span class="faq-toggle">＋</span>
       </div>
-      <div class="faq-a">はい、ほとんどのイベントはお子様連れでご参加いただけます。託児スペースを設けているイベントもございます。詳細はお申し込み時にご確認ください。</div>
+      <div class="faq-a">いいえ、ママに限らず独身の方や男性の方も大歓迎です。私たちは、自分らしく輝きたいと願うすべての方を応援しています。ご夫婦やパートナーと一緒にご参加される方もいらっしゃいます。性別・年齢を問わず、お気軽にお問い
+  合わせください。</div>
     </div>
 
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">
         <span class="faq-q-mark">Q</span>
-        <span class="faq-q-text">広島市外に住んでいますが参加できますか？</span>
+        <span class="faq-q-text">広島県外に住んでいますがサポートしてもらえますか？</span>
         <span class="faq-toggle">＋</span>
       </div>
-      <div class="faq-a">もちろんです。オンラインでご参加いただけるプログラムも多数ご用意しています。全国各地のママに参加していただいています。</div>
+      <div class="faq-a">もちろんです。LINEやZoom等を活用してオンラインのサポートが可能です。オンラインでご参加いただけるイベントもご用意しています</div>
     </div>
 
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">
         <span class="faq-q-mark">Q</span>
-        <span class="faq-q-text">料金はどのくらいかかりますか？</span>
+        <span class="faq-q-text">扱っている製品はどのような効果が期待できますか？</span>
         <span class="faq-toggle">＋</span>
       </div>
-      <div class="faq-a">プログラムによって異なります。無料の交流会から、個別コーチング（月額制）まで様々なプランをご用意しています。まずはお気軽に無料体験会にご参加ください。</div>
+      <div class="faq-a">参加者からは「若く見られるようになった」「毎朝鏡を見るのが楽しみになった」「心身ともにより良くなった」などのご感想をいただいています。個人差はありますが、多くの方が内面・外見ともに変化を実感されています。</div>
     </div>
 
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">
         <span class="faq-q-mark">Q</span>
-        <span class="faq-q-text">働いているママでも参加できますか？</span>
+        <span class="faq-q-text">イベントは子供連れで参加できますか？</span>
         <span class="faq-toggle">＋</span>
       </div>
-      <div class="faq-a">はい。平日夜間・週末のプログラムも充実しています。お仕事をされているママにも多数ご参加いただいています。</div>
+      <div class="faq-a">ほとんどのイベントはお子様連れでご参加いただけますが、詳細はイベントお申し込み時にご確認ください。</div>
     </div>
 
     <div class="faq-item" onclick="this.classList.toggle('open')">
       <div class="faq-q">
         <span class="faq-q-mark">Q</span>
-        <span class="faq-q-text">どのような効果が期待できますか？</span>
+        <span class="faq-q-text">パートや会社員をしながらでもビジネス活動はできますか？</span>
         <span class="faq-toggle">＋</span>
       </div>
-      <div class="faq-a">参加者からは「自己肯定感が上がった」「夫婦関係が良くなった」「毎朝鏡を見るのが楽しみになった」などのご感想をいただいています。個人差はありますが、多くのママが内面・外見ともに変化を実感されています。</div>
-    </div>
-
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">
-        <span class="faq-q-mark">Q</span>
-        <span class="faq-q-text">友人と一緒に参加できますか？</span>
-        <span class="faq-toggle">＋</span>
-      </div>
-      <div class="faq-a">もちろんです。お友達やご姉妹とのご参加も大歓迎です。お友達紹介特典もご用意していますので、お問い合わせください。</div>
-    </div>
-
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">
-        <span class="faq-q-mark">Q</span>
-        <span class="faq-q-text">パートや会社員をしながらでもできますか？</span>
-        <span class="faq-toggle">＋</span>
-      </div>
-      <div class="faq-a">はい、もちろんです。実際にパートや会社員として働きながら参加されているメンバーが多数います。平日夜間・週末対応のプログラムやオンライン参加も充実していますので、ご自身のペースで無理なく続けていただけます。</div>
+      <div class="faq-a">はい、もちろんです。実際にパートや会社員として働きながら参加されているメンバーもいます。ご自身のペースで無理なく続けていただけます。</div>
     </div>
 
     <div class="faq-item" onclick="this.classList.toggle('open')">
@@ -880,16 +905,7 @@
         <span class="faq-q-text">美容の仕事に興味がありますが、未経験でもできますか？</span>
         <span class="faq-toggle">＋</span>
       </div>
-      <div class="faq-a">はい、未経験の方でも大丈夫です。基礎から丁寧にお伝えするカリキュラムをご用意していますので、美容に関する知識や経験がなくてもスタートできます。実際に未経験からスキルを身につけ、活躍しているメンバーも多くいます。まずはお気軽にご相談ください。</div>
-    </div>
-
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">
-        <span class="faq-q-mark">Q</span>
-        <span class="faq-q-text">製品に興味がありますが、高額ですか？</span>
-        <span class="faq-toggle">＋</span>
-      </div>
-      <div class="faq-a">プチプラ価格ではありませんが、デパートコスメと比べるとお求めやすい価格帯です。品質・効果・使用量を総合したコストパフォーマンスには自信を持っています。「むしろコスパが良い」というお声も多くいただいています。詳しい製品内容や価格については個別にご案内しますので、お気軽にお問い合わせください。</div>
+      <div class="faq-a">はい、未経験の方でも大丈夫です。基礎から丁寧にお伝えするカリキュラムや支援体制を整備していますので、美容に関する知識や経験がなくてもスタートできます。実際に未経験からスキルを身につけ、活躍しているメンバーがほとんどです。まずはお気軽にご相談ください。</div>
     </div>
 
   </div>
@@ -902,24 +918,12 @@
     <h2 class="section-title">お問い合わせ</h2>
     <div class="section-divider"></div>
     <p style="font-size: 14px; color: var(--text-light); letter-spacing: 0.08em; line-height: 2;">
-      ご参加・ご質問・取材等のお問い合わせは<br>お気軽にご連絡ください。
+      お問い合わせはお気軽にご連絡ください。
     </p>
     <div class="contact-info">
       <div class="contact-row">
-        <span class="contact-row-label">EMAIL</span>
-        <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5a33343c351a3b33293b2877373b373b7732332835293233373b74302a">[email&#160;protected]</a></span>
-      </div>
-      <div class="contact-row">
-        <span class="contact-row-label">LINE</span>
-        <span>@aisar_mama_hiroshima</span>
-      </div>
-      <div class="contact-row">
-        <span class="contact-row-label">Instagram</span>
-        <span>@aisare_mama_hiroshima</span>
-      </div>
-      <div class="contact-row">
-        <span class="contact-row-label">TEL</span>
-        <span>082-XXX-XXXX（平日 10:00〜17:00）</span>
+        <span class="contact-row-label">Mail</span>
+        <span>makipom7@gmail.com</span>
       </div>
     </div>
     <a href="/cdn-cgi/l/email-protection#553c3b333a15343c2634277838343834783d3c273a263d3c38347b3f25" class="btn-contact">メールで問い合わせる</a>
@@ -940,6 +944,21 @@
     });
   }, { threshold: 0.1 });
   reveals.forEach(el => io.observe(el));
+
+  // Lightbox
+  function openLightbox(el) {
+    var src = el.querySelector('img').src;
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
 </script>
 </body>
 </html>
