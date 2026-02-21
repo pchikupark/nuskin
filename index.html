@@ -597,6 +597,20 @@
     box-shadow: 0 8px 30px rgba(196,94,122,0.3);
   }
   .btn-contact:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(196,94,122,0.4); }
+  .btn-contact-line {
+    display: inline-block;
+    padding: 18px 60px;
+    background: linear-gradient(135deg, #06C755, #00B348);
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.25em;
+    transition: all 0.4s;
+    margin-top: 20px;
+    box-shadow: 0 8px 30px rgba(6,199,85,0.3);
+  }
+  .btn-contact-line:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(6,199,85,0.4); }
+  .contact-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
 
   /* ─── FOOTER ─── */
   footer { background: var(--text-dark); color: rgba(255,255,255,0.4); text-align: center; padding: 50px 20px; font-size: 14px; letter-spacing: 0.15em; }
@@ -926,7 +940,10 @@
         <span>makipom7@gmail.com</span>
       </div>
     </div>
-    <a href="/cdn-cgi/l/email-protection#553c3b333a15343c2634277838343834783d3c273a263d3c38347b3f25" class="btn-contact">メールで問い合わせる</a>
+    <div class="contact-buttons">
+      <a href="mailto:makipom7@gmail.com" class="btn-contact">メールで問い合わせる</a>
+      <a href="https://line.me/ti/p/3o54HP-z5G" target="_blank" class="btn-contact-line">LINEで問い合わせる</a>
+    </div>
   </div>
 </div>
 
