@@ -1,0 +1,14 @@
+# バックアップ・旧バージョン
+index_backup_*.html
+1work_support*.jpg
+
+# アンダースコア始まりの旧ファイル
+_*.jpg
+_*.png
+
+# HEICファイル
+*.heic
+*.HEIC
+
+# 重複ファイル
+yamamiri.jpg
