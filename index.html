@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>永遠∞愛されママProject広島</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600&family=Shippori+Mincho:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink-lightest: #fff5f7;
+    --pink-light: #fde8ef;
+    --pink-medium: #f7c5d5;
+    --pink-main: #e8839f;
+    --pink-deep: #c45e7a;
+    --gold: #c9a96e;
+    --text-dark: #3a2230;
+    --text-mid: #6b4358;
+    --text-light: #9e7080;
+    --white: #fff;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Serif JP', 'Shippori Mincho', serif;
+    background: var(--pink-lightest);
+    color: var(--text-dark);
+    line-height: 1.9;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background:
+      radial-gradient(ellipse 60% 40% at 10% 20%, rgba(247,197,213,0.3) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 60% at 90% 80%, rgba(232,131,159,0.15) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ─── NAV ─── */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 50px;
+    background: rgba(255,245,247,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(232,131,159,0.2);
+  }
+  .nav-logo {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--pink-deep);
+    letter-spacing: 0.1em;
+  }
+  .nav-links { display: flex; gap: 28px; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-mid);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    transition: color 0.3s;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0; right: 0;
+    height: 1px;
+    background: var(--pink-main);
+    transform: scaleX(0);
+    transition: transform 0.3s;
+  }
+  .nav-links a:hover { color: var(--pink-deep); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* ─── HERO ─── */
+  header {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 20px;
+    overflow: hidden;
+  }
+  .header-deco {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(160deg, #fde8ef 0%, #fff5f7 50%, #fde8ef 100%);
+    z-index: 0;
+  }
+  .header-deco::after {
+    content: '';
+    display: none;
+  }
+  .petal {
+    position: absolute;
+    border-radius: 50% 0 50% 0;
+    opacity: 0.18;
+    animation: float 8s ease-in-out infinite;
+  }
+  .petal:nth-child(1) { width: 120px; height: 120px; background: var(--pink-main); top: 10%; left: 5%; animation-delay: 0s; }
+  .petal:nth-child(2) { width: 80px; height: 80px; background: var(--pink-deep); top: 20%; right: 8%; animation-delay: 2s; }
+  .petal:nth-child(3) { width: 160px; height: 160px; background: var(--pink-medium); bottom: 15%; left: 3%; animation-delay: 4s; }
+  .petal:nth-child(4) { width: 100px; height: 100px; background: var(--pink-main); bottom: 10%; right: 5%; animation-delay: 1s; }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+  }
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    animation: fadeUp 1.2s ease forwards;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1000px;
+    width: 100%;
+  }
+  .hero-text {
+    flex: 1;
+    text-align: center;
+  }
+  .hero-image {
+    flex-shrink: 0;
+    width: 320px;
+    height: 320px;
+    border: 3px solid var(--pink-medium);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(232,131,159,0.15);
+  }
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-eyebrow {
+    font-size: 14px;
+    letter-spacing: 0.35em;
+    color: var(--pink-deep);
+    margin-bottom: 24px;
+    display: block;
+  }
+  .hero-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(28px, 5vw, 56px);
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.5;
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+  }
+  .hero-title .infinity { color: var(--pink-deep); font-size: 1.2em; }
+  .hero-subtitle {
+    font-size: clamp(13px, 2vw, 17px);
+    color: var(--text-mid);
+    font-weight: 300;
+    letter-spacing: 0.25em;
+    margin-bottom: 48px;
+  }
+  .hero-divider {
+    width: 80px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 48px;
+  }
+  .hero-tagline {
+    font-size: 16px;
+    color: var(--text-mid);
+    font-weight: 300;
+    letter-spacing: 0.15em;
+    max-width: 500px;
+    margin: 0 auto 52px;
+  }
+  .hero-logo {
+    width: 240px;
+    height: 240px;
+    object-fit: contain;
+    margin-bottom: 28px;
+    filter: drop-shadow(0 4px 24px rgba(196,94,122,0.18));
+  }
+  .contact-logo {
+    width: 110px;
+    height: 110px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 28px;
+    opacity: 0.9;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 16px 48px;
+    border: 1px solid var(--pink-deep);
+    color: var(--pink-deep);
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.2em;
+    transition: all 0.4s;
+    position: relative;
+    overflow: hidden;
+    background: transparent;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: var(--pink-deep);
+    transition: left 0.4s;
+    z-index: -1;
+  }
+  .btn-primary:hover { color: white; }
+  .btn-primary:hover::before { left: 0; }
+
+  /* ─── SECTIONS ─── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 100px 20px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-size: 13px;
+    letter-spacing: 0.4em;
+    color: var(--pink-main);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+  .section-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: clamp(22px, 4vw, 38px);
+    font-weight: 600;
+    color: var(--text-dark);
+    text-align: center;
+    letter-spacing: 0.12em;
+    margin-bottom: 20px;
+  }
+  .section-divider {
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, transparent, var(--gold), transparent);
+    margin: 0 auto 60px;
+  }
+
+  /* ─── PHILOSOPHY ─── */
+  .philosophy-bg {
+    background: linear-gradient(135deg, #fde8ef 0%, #fff5f7 100%);
+    padding: 80px 20px;
+  }
+  .philosophy-text {
+    max-width: 680px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
+    color: var(--text-mid);
+    font-weight: 300;
+    line-height: 2.2;
+    letter-spacing: 0.08em;
+  }
+  .philosophy-text p + p { margin-top: 1.6em; }
+  .philosophy-quote {
+    font-size: clamp(18px, 3vw, 28px);
+    color: var(--pink-deep);
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    margin: 40px 0;
+    text-align: center;
+    font-family: 'Shippori Mincho', serif;
+  }
+
+  /* ─── ACTIVITIES（写真カード） ─── */
+  .activity-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .activity-card {
+    background: white;
+    border: 1px solid rgba(232,131,159,0.18);
+    overflow: hidden;
+    transition: all 0.4s;
+    position: relative;
+  }
+  .activity-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, var(--pink-medium), var(--pink-deep));
+    transform: scaleX(0);
+    transition: transform 0.4s;
+    z-index: 1;
+  }
+  .activity-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(196,94,122,0.12); }
+  .activity-card:hover::before { transform: scaleX(1); }
+
+  .activity-photo {
+    width: 100%;
+    height: 220px;
+    background: linear-gradient(135deg, var(--pink-light) 0%, var(--pink-medium) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .activity-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    position: absolute; top: 0; left: 0;
+  }
+  .activity-photo-icon { font-size: 34px; }
+  .activity-photo-hint {
+    font-size: 10px;
+    color: var(--pink-deep);
+    letter-spacing: 0.1em;
+    background: rgba(255,255,255,0.65);
+    padding: 2px 10px;
+    border-radius: 20px;
+  }
+  .activity-body { padding: 28px 28px 34px; }
+  .activity-card h3 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 18px;
+    color: var(--text-dark);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .activity-card p { font-size: 14px; color: var(--text-light); line-height: 2.0; }
+
+  /* ─── ACHIEVEMENTS（イベントギャラリー） ─── */
+  .achievements-bg {
+    background: linear-gradient(135deg, #3a2230 0%, #5c3348 100%);
+    padding: 100px 20px;
+  }
+  .achievements-bg .section-title { color: white; }
+  .achievements-bg .section-label { color: var(--pink-medium); }
+
+  .event-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .event-gallery-item {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(232,131,159,0.15);
+    cursor: pointer;
+  }
+  .event-gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+  }
+  .event-gallery-item:hover img { transform: scale(1.06); }
+  .event-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: linear-gradient(135deg, rgba(247,197,213,0.1) 0%, rgba(196,94,122,0.06) 100%);
+    transition: background 0.4s;
+  }
+  .event-gallery-item:hover .event-placeholder {
+    background: linear-gradient(135deg, rgba(247,197,213,0.18) 0%, rgba(196,94,122,0.12) 100%);
+  }
+  .event-placeholder-icon { font-size: 26px; opacity: 0.45; }
+  .event-placeholder-text {
+    font-size: 11px;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.12em;
+    text-align: center;
+    padding: 0 10px;
+    line-height: 1.7;
+  }
+  .event-overlay {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(58,34,48,0.88), transparent);
+    padding: 24px 16px 14px;
+    transform: translateY(100%);
+    transition: transform 0.4s;
+  }
+  .event-gallery-item:hover .event-overlay { transform: translateY(0); }
+  .event-overlay-title { font-size: 15px; color: white; font-family: 'Shippori Mincho', serif; letter-spacing: 0.1em; }
+  .event-overlay-date { font-size: 13px; color: var(--pink-medium); margin-top: 4px; letter-spacing: 0.1em; }
+
+  .photo-guide {
+    max-width: 960px;
+    margin: 28px auto 0;
+    padding: 16px 24px;
+    background: rgba(255,255,255,0.05);
+    border: 1px dashed rgba(232,131,159,0.28);
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.08em;
+    text-align: center;
+    line-height: 1.8;
+  }
+
+  /* ─── EVENT RECORDS（過去のイベント実績） ─── */
+  .event-records-list {
+    max-width: 720px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+  .event-record {
+    background: white;
+    border: 1px solid rgba(232,131,159,0.18);
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 16px;
+  }
+  .event-record-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 28px;
+    background: linear-gradient(180deg, #e8899f 0%, #c45e7a 50%, #b0536e 100%);
+    box-shadow: 0 4px 0 #8f3d55, 0 6px 16px rgba(196,94,122,0.35);
+    transition: box-shadow 0.15s, transform 0.15s;
+    position: relative;
+  }
+  .event-record-header:hover {
+    box-shadow: 0 6px 0 #8f3d55, 0 10px 24px rgba(196,94,122,0.4);
+    transform: translateY(-2px);
+  }
+  .event-record.open .event-record-header {
+    box-shadow: 0 2px 0 #8f3d55, 0 4px 10px rgba(196,94,122,0.3);
+    transform: translateY(1px);
+  }
+  .event-record-header-title {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 17px;
+    color: #fff;
+    letter-spacing: 0.08em;
+    font-weight: 500;
+    flex: 1;
+  }
+  .event-record-toggle {
+    font-size: 26px;
+    color: #fff;
+    flex-shrink: 0;
+    transition: transform 0.3s;
+    line-height: 1;
+    background: rgba(255,255,255,0.2);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .event-record.open .event-record-toggle { transform: rotate(45deg); }
+  .event-record-content { display: none; }
+  .event-record.open .event-record-content { display: block; }
+  .event-record-photos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 3px;
+  }
+  .event-record-photo {
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--pink-light) 0%, var(--pink-medium) 100%);
+  }
+  /* ポスター：左列2段分・全体を切り取らずに表示 */
+  .event-record-photo--poster {
+    grid-row: span 2;
+    background: var(--pink-lightest);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .event-record-photo--poster img {
+    width: 100%; height: 100%;
+    object-fit: contain;
+  }
+  /* クリック可能な写真：右列・ライトボックスで全表示 */
+  .event-record-photo--clickable {
+    aspect-ratio: 4/3;
+    cursor: pointer;
+    position: relative;
+  }
+  .event-record-photo--clickable img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+    display: block;
+  }
+  .event-record-photo--clickable:hover img { transform: scale(1.05); }
+  .event-record-photo--clickable::after {
+    content: '🔍';
+    position: absolute;
+    bottom: 8px; right: 10px;
+    font-size: 16px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .event-record-photo--clickable:hover::after { opacity: 1; }
+  .event-record-body { padding: 28px 32px 36px; }
+  .event-record-body h3 {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 18px;
+    color: var(--text-dark);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .event-record-body p { font-size: 14px; color: var(--text-light); line-height: 2.0; }
+
+  /* ─── MEMBERS ─── */
+  .members-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+  .member-card { text-align: center; }
+  .member-photo {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    position: relative;
+    border: 2px solid rgba(232,131,159,0.3);
+    background: linear-gradient(135deg, var(--pink-light), var(--pink-medium));
+  }
+  .member-photo::after {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid rgba(232,131,159,0.2);
+    pointer-events: none;
+  }
+  .member-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .member-photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+  .member-photo-placeholder span:first-child { font-size: 34px; }
+  .member-photo-placeholder span:last-child { font-size: 10px; color: var(--pink-deep); letter-spacing: 0.1em; }
+  .member-name { font-family: 'Shippori Mincho', serif; font-size: 19px; font-weight: 600; color: var(--text-dark); letter-spacing: 0.1em; margin-bottom: 6px; }
+  .member-role { font-size: 13px; color: var(--pink-deep); letter-spacing: 0.2em; margin-bottom: 14px; }
+  .member-bio { font-size: 15px; color: var(--text-light); line-height: 1.9; }
+  .member-sns { margin-top: 16px; }
+  .member-sns a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .member-sns a:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(220,39,67,0.35); }
+  .member-sns a svg { width: 20px; height: 20px; fill: white; }
+
+  /* ─── MESSAGE ─── */
+  .message-wrap {
+    background: white;
+    padding: 70px 60px;
+    border: 1px solid rgba(232,131,159,0.15);
+    position: relative;
+    overflow: hidden;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+  .message-wrap::before {
+    content: '❝';
+    position: absolute;
+    top: 20px; left: 30px;
+    font-size: 80px;
+    color: rgba(232,131,159,0.12);
+    font-family: serif;
+    line-height: 1;
+  }
+  .message-wrap::after {
+    content: '';
+    position: absolute;
+    bottom: 0; right: 0;
+    width: 200px; height: 200px;
+    background: radial-gradient(ellipse at bottom right, rgba(247,197,213,0.3), transparent);
+    pointer-events: none;
+  }
+  .message-text { font-size: 17px; color: var(--text-mid); line-height: 2.3; letter-spacing: 0.06em; font-weight: 300; position: relative; z-index: 1; }
+  .message-sign { margin-top: 40px; text-align: right; font-size: 15px; color: var(--text-light); letter-spacing: 0.1em; }
+  .message-sign strong { display: block; font-family: 'Shippori Mincho', serif; font-size: 20px; color: var(--text-dark); margin-top: 6px; }
+
+  /* ─── PHOTO GALLERY ─── */
+  .photo-gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    width: 100%;
+  }
+  .photo-gallery-item {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+  }
+  .photo-gallery-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+  }
+
+  /* ─── LIGHTBOX ─── */
+  .lightbox {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .lightbox.active { display: flex; }
+  .lightbox img {
+    max-width: 90%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5);
+  }
+  .lightbox-close {
+    position: absolute;
+    top: 20px; right: 30px;
+    font-size: 36px;
+    color: white;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 1001;
+  }
+
+  /* ─── FAQ ─── */
+  .faq-list { max-width: 720px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid rgba(232,131,159,0.2); padding: 30px 0; cursor: pointer; }
+  .faq-q { display: flex; align-items: flex-start; gap: 16px; }
+  .faq-q-mark { font-size: 24px; color: var(--pink-deep); font-weight: 700; flex-shrink: 0; font-family: serif; line-height: 1.4; }
+  .faq-q-text { font-family: 'Shippori Mincho', serif; font-size: 18px; color: var(--text-dark); letter-spacing: 0.08em; font-weight: 500; flex: 1; }
+  .faq-toggle { font-size: 22px; color: var(--pink-main); flex-shrink: 0; transition: transform 0.3s; line-height: 1.4; }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); }
+  .faq-a { margin-top: 18px; font-size: 16px; color: var(--text-light); line-height: 2; padding-left: 38px; border-left: 2px solid var(--pink-light); display: none; }
+  .faq-item.open .faq-a { display: block; }
+
+  /* ─── CONTACT ─── */
+  .contact-bg { background: linear-gradient(135deg, #fde8ef 0%, #fff5f7 100%); padding: 100px 20px; }
+  .contact-wrap { max-width: 580px; margin: 0 auto; text-align: center; }
+  .contact-info { margin: 40px 0; display: flex; flex-direction: column; gap: 16px; }
+  .contact-row { display: flex; align-items: center; justify-content: center; gap: 16px; font-size: 16px; color: var(--text-mid); letter-spacing: 0.08em; }
+  .contact-row-label { font-size: 13px; letter-spacing: 0.2em; color: var(--pink-deep); min-width: 60px; text-align: right; }
+  .btn-contact {
+    display: inline-block;
+    padding: 18px 60px;
+    background: linear-gradient(135deg, var(--pink-deep), var(--pink-main));
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.25em;
+    transition: all 0.4s;
+    margin-top: 20px;
+    box-shadow: 0 8px 30px rgba(196,94,122,0.3);
+  }
+  .btn-contact:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(196,94,122,0.4); }
+  .btn-contact-line {
+    display: inline-block;
+    padding: 18px 60px;
+    background: linear-gradient(135deg, #06C755, #00B348);
+    color: white;
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.25em;
+    transition: all 0.4s;
+    margin-top: 20px;
+    box-shadow: 0 8px 30px rgba(6,199,85,0.3);
+  }
+  .btn-contact-line:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(6,199,85,0.4); }
+  .contact-buttons { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+
+  /* ─── FOOTER ─── */
+  footer { background: var(--text-dark); color: rgba(255,255,255,0.4); text-align: center; padding: 50px 20px; font-size: 14px; letter-spacing: 0.15em; }
+  footer .footer-logo { font-family: 'Shippori Mincho', serif; font-size: 20px; color: rgba(255,255,255,0.7); margin-bottom: 20px; display: block; letter-spacing: 0.15em; }
+
+  /* ─── BACK TO TOP ─── */
+  .back-to-top {
+    position: fixed;
+    bottom: 36px;
+    right: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 16px;
+    background: rgba(255,245,247,0.92);
+    border: 1px solid var(--pink-medium);
+    color: var(--pink-deep);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    text-decoration: none;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(196,94,122,0.15);
+    transition: opacity 0.4s, transform 0.4s, box-shadow 0.3s;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+    z-index: 90;
+  }
+  .back-to-top.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+  }
+  .back-to-top:hover {
+    box-shadow: 0 8px 28px rgba(196,94,122,0.28);
+    transform: translateY(-3px);
+  }
+  .back-to-top-arrow { font-size: 18px; line-height: 1; }
+
+  /* ─── REVEAL ─── */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  /* ─── HAMBURGER ─── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 110;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background: var(--pink-deep);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+    transform-origin: center;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .nav-mobile {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    background: rgba(255,245,247,0.97);
+    backdrop-filter: blur(12px);
+    padding: 80px 40px 40px;
+    z-index: 105;
+    border-bottom: 1px solid rgba(232,131,159,0.2);
+    transform: translateY(-100%);
+    transition: transform 0.4s ease;
+  }
+  .nav-mobile.open { transform: translateY(0); }
+  .nav-mobile ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .nav-mobile ul li a {
+    display: block;
+    padding: 18px 0;
+    font-size: 17px;
+    color: var(--text-mid);
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    border-bottom: 1px solid rgba(232,131,159,0.15);
+    font-family: 'Shippori Mincho', serif;
+    transition: color 0.2s, padding-left 0.2s;
+  }
+  .nav-mobile ul li a:hover { color: var(--pink-deep); padding-left: 8px; }
+
+  @media (max-width: 760px) {
+    .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
+    .nav-mobile { display: block; }
+    .hero-content { flex-direction: column; gap: 40px; }
+    .hero-text { text-align: center; }
+    .hero-image { width: 240px; height: 240px; }
+    .activity-grid { grid-template-columns: 1fr; }
+    .event-gallery { grid-template-columns: repeat(2, 1fr); }
+    .photo-gallery { grid-template-columns: repeat(2, 1fr); }
+    .members-grid { grid-template-columns: 1fr; gap: 48px; }
+    .message-wrap { padding: 50px 30px; }
+  }
+  @media (max-width: 480px) {
+    .event-gallery { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-logo">永遠∞愛されママProject 広島</div>
+  <ul class="nav-links">
+    <li><a href="#philosophy">理念</a></li>
+    <li><a href="#activities">活動</a></li>
+    <li><a href="#members">メンバー</a></li>
+    <!-- <li><a href="#message">代表メッセージ</a></li> -->
+    <li><a href="#events">イベント実績</a></li>
+    <!-- <li><a href="#photos">写真</a></li> -->
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+  <button class="nav-hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile" id="nav-mobile" aria-hidden="true">
+  <ul>
+    <li><a href="#philosophy">理念</a></li>
+    <li><a href="#activities">活動</a></li>
+    <li><a href="#members">メンバー</a></li>
+    <li><a href="#events">イベント実績</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<header>
+  <div class="header-deco">
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-text">
+      <span class="hero-eyebrow">Hiroshima / Founded 2026</span>
+      <h1 class="hero-title">
+        永遠<span class="infinity">∞</span>愛されママ<br>Project 広島
+      </h1>
+      <p class="hero-subtitle">— すべてのママが、輝き続けるために —</p>
+      <div class="hero-divider"></div>
+      <p class="hero-tagline">
+        ありのままの自分を愛し、<br>
+        家族に愛され、社会に輝く。<br>
+        最先端のBeauty＆Wellnessで実現。
+      </p>
+    </div>
+    <div class="hero-image">
+      <img src="aisaremamalogo.jpg" alt="永遠∞愛されママProject広島">
+    </div>
+  </div>
+</header>
+
+<!-- PHILOSOPHY -->
+<div id="philosophy" class="philosophy-bg">
+  <section style="padding: 80px 20px;">
+    <div class="reveal">
+      <span class="section-label">Philosophy</span>
+      <h2 class="section-title">わたしたちの理念</h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="philosophy-quote reveal">「愛されることは、愛することから始まる」</div>
+    <div class="philosophy-text reveal">
+      <p>「もっと頑張らなきゃ」「子どものためだから」——忙しい毎日の中で、気づけば自分のことを後回しにしてしまっているママへ。あなたが笑顔でいることが、家族にとっての一番の幸せだと私たちは考えています。</p>
+      <p>そんな想いから生まれたのが「永遠∞愛されママProject広島」です。</p>
+      <p>私たちは「自分を愛することが、周りを幸せにする」という信念を持っています。最先端のBeauty＆Wellness、新しいワークスタイルを取り入れて、一歩踏み出すあなたと共に歩んでいきます。</p>
+    </div>
+  </section>
+</div>
+
+<!-- ACTIVITIES -->
+<section id="activities">
+  <div class="reveal">
+    <span class="section-label">Activities</span>
+    <h2 class="section-title">活動内容</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="activity-grid">
+
+    <div class="activity-card reveal">
+      <div class="activity-photo" id="activity-photo-1">
+        <img src="personal_support.jpg?w=600&q=80" alt="パーソナルサポート">
+      </div>
+      <div class="activity-body">
+        <h3>パーソナルサポート</h3>
+        <p>あなたの悩みや理想のライフスタイルに合わせて、内側と外側の両面からアプローチ。身体の状態やお肌を整えることで、鏡を見るのが楽しみになります。</p>
+      </div>
+    </div>
+
+    <div class="activity-card reveal">
+      <div class="activity-photo" id="activity-photo-2">
+        <img src="seminer.jpg?w=600&q=80" alt="セミナー・ワークショップ">
+      </div>
+      <div class="activity-body">
+        <h3>セミナー・ワークショップ</h3>
+        <p>主に健康・美容のテーマで開催。学びと実践を通じて、ママたちが輝くための知識とスキルを楽しく身につけられます。</p>
+      </div>
+    </div>
+
+    <div class="activity-card reveal">
+      <div class="activity-photo" id="activity-photo-3">
+        <img src="work_support.jpg?w=600&q=80" alt="起業・副業サポート">
+      </div>
+      <div class="activity-body">
+        <h3>起業・副業サポート</h3>
+        <p>ゼロからのスタートでも大丈夫。理想のライフスタイルを目指し、立ち上げからお仕事として自立できるまで、私たちが一歩ずつ隣で支えます。</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- MEMBERS -->
+<section id="members">
+  <div class="reveal">
+    <span class="section-label">Members</span>
+    <h2 class="section-title">メンバー紹介</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="members-grid">
+
+    <!--
+      ★ プロフィール写真の差し替え方法 ★
+      .member-photo-placeholder を削除し、
+      <img src="images/member1.jpg" alt="菅原 真希"> を追加してください。
+    -->
+
+    <div class="member-card reveal">
+      <div class="member-photo" id="member-photo-1">
+        <img src="sugamaki.png" alt="菅原 真希">
+      </div>
+      <div class="member-name">菅原 真希</div>
+      <div class="member-role">代表</div>
+      <p class="member-bio">美容・健康アドバイザー。ママが自分らしく輝ける場所をつくりたいという想いで、日々活動を牽引。管理栄養士、化粧品検定2級。</p>
+      <div class="member-sns">
+        <a href="https://www.instagram.com/sugawara.maki7" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="member-card reveal">
+      <div class="member-photo" id="member-photo-2">
+        <img src="yamamiri.png" alt="山下 美里">
+      </div>
+      <div class="member-name">山下 美里</div>
+      <div class="member-role">メンバー</div>
+      <p class="member-bio">美容・健康アドバイザー。丁寧なカウンセリングと温かい人柄で、多くのママから厚い信頼を集める。管理栄養士。</p>
+      <div class="member-sns">
+        <a href="https://www.instagram.com/miri_wellbeing" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="member-card reveal">
+      <div class="member-photo" id="member-photo-3">
+        <img src="sugatake.png" alt="菅原 嵩得">
+      </div>
+      <div class="member-name">菅原 嵩得</div>
+      <div class="member-role">メンバー</div>
+      <p class="member-bio">コミュニティ運営、ビジネス支援を担当。メンバーの可能性を引き出し、夢の実現に向けて共に歩む。</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- EVENTS -->
+<section id="events">
+  <div class="reveal">
+    <span class="section-label">Events</span>
+    <h2 class="section-title">イベント実績</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="event-records-list">
+
+    <!--
+      ★ イベントを追加するときは、この <div class="event-record reveal"> ブロックを
+         丸ごとコピーして下に貼り付けてください。
+    -->
+    <div class="event-record reveal" onclick="this.classList.toggle('open')">
+      <div class="event-record-header">
+        <span class="event-record-header-title">2026年2月　バレンタインデーに贈るセミナー＆ワークショップ</span>
+        <span class="event-record-toggle">＋</span>
+      </div>
+      <div class="event-record-content">
+        <div class="event-record-photos">
+          <!-- ポスター：全体表示（クリック不要） -->
+          <div class="event-record-photo event-record-photo--poster">
+            <img src="event1_a.jpg" alt="バレンタインデーに贈るセミナー＆ワークショップ ポスター">
+          </div>
+          <!-- 写真2・3：クリックで全表示 -->
+          <div class="event-record-photo event-record-photo--clickable" onclick="event.stopPropagation(); openLightbox(this)">
+            <img src="event1_b.jpg" alt="バレンタインデーに贈るセミナー＆ワークショップ 写真2">
+          </div>
+          <div class="event-record-photo event-record-photo--clickable" onclick="event.stopPropagation(); openLightbox(this)">
+            <img src="event1_c.jpg" alt="バレンタインデーに贈るセミナー＆ワークショップ 写真3">
+          </div>
+        </div>
+        <div class="event-record-body">
+          <p>2026年2月14日に福山市、15日に広島市の2日間で開催。当日は、ママはもちろん、老若男女幅広い世代の方々にご参加いただきました。健康セミナーでは、ここでしか得られない「一生モノの知識」をお伝えし、美肌づくりワークショップでは、美容の大原則を伝授。参加者の皆様に、その場でうっとり美肌を実感していただきました。</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!--
+<section id="message" style="padding-bottom: 0;">
+  <div class="reveal">
+    <span class="section-label">Message</span>
+    <h2 class="section-title">代表メッセージ</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="message-wrap reveal">
+    <p class="message-text">
+      かつての私は、「母親なんだから、こうあるべき」という目に見えないルールに縛られていました。<br>
+      自分のことは後回し。オシャレも、やりたいことも、子どもを理由で蓋をしてきました。<br>
+      いつの間にか疲れきった顔。孤独と不安が、私の中にずっとありました。<br><br>
+      転機となったのは、まず自分自身の体と心に丁寧に向き合い始めたことでした。<br>
+      正しい健康知識を取り入れ、自分をいたわる美容の時間を少しずつ持つことで、驚くほど心が軽くなり、失っていた「自分への自信」を取り戻すことができました。<br>
+      ママが健やかで美しく、笑顔でいることは、家族にとっても一番の幸せです。<br><br>
+      「永遠∞愛されママProject広島」では、美容・健康・マインドの3軸から、広島のママたちが内側から品よく輝き続けるお手伝いをしています。
+    </p>
+    <div class="message-sign">
+      代表
+      <strong>菅原 真希</strong>
+    </div>
+  </div>
+</section>
+-->
+
+<!-- PHOTOS -->
+<!--
+<section id="photos">
+  <div class="reveal">
+    <span class="section-label">Photos</span>
+    <h2 class="section-title">写真</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="photo-gallery reveal">
+    <div class="photo-gallery-item">
+      <img src="p1.png?w=600&q=80" alt="活動写真1">
+    </div>
+    <div class="photo-gallery-item">
+      <img src="p2.jpg?w=600&q=80" alt="活動写真2">
+    </div>
+    <div class="photo-gallery-item">
+      <img src="p3.jpg?w=600&q=80" alt="活動写真3">
+    </div>
+    <div class="photo-gallery-item">
+      <img src="p4.jpg?w=600&q=80" alt="活動写真4">
+    </div>
+    <div class="photo-gallery-item">
+      <img src="p5.jpg?w=600&q=80" alt="活動写真5">
+    </div>
+    <div class="photo-gallery-item">
+      <img src="p6.jpg?w=600&q=80" alt="活動写真6">
+    </div>
+  </div>
+</section>
+-->
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<!-- FAQ -->
+<section id="faq" style="padding-top: 100px;">
+  <div class="reveal">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">よくあるご質問</h2>
+    <div class="section-divider"></div>
+  </div>
+  <div class="faq-list reveal">
+  
+  <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-mark">Q</span>
+        <span class="faq-q-text">対象はママだけですか？</span>
+        <span class="faq-toggle">＋</span>
+      </div>
+      <div class="faq-a">いいえ、ママに限らず独身の方や男性の方も大歓迎です。私たちは、自分らしく輝きたいと願うすべての方を応援しています。ご夫婦やパートナーと一緒にご参加される方もいらっしゃいます。性別・年齢を問わず、お気軽にお問い
+  合わせください。</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-mark">Q</span>
+        <span class="faq-q-text">広島県外に住んでいますがサポートしてもらえますか？</span>
+        <span class="faq-toggle">＋</span>
+      </div>
+      <div class="faq-a">もちろんです。LINEやZoom等を活用してオンラインのサポートが可能です。オンラインでご参加いただけるイベントもご用意しています。</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-mark">Q</span>
+        <span class="faq-q-text">扱っている製品はどのような効果が期待できますか？</span>
+        <span class="faq-toggle">＋</span>
+      </div>
+      <div class="faq-a">参加者からは「若く見られるようになった」「毎朝鏡を見るのが楽しみになった」「心身ともにより良くなった」などのご感想をいただいています。個人差はありますが、多くの方が内面・外見ともに変化を実感されています。</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-mark">Q</span>
+        <span class="faq-q-text">イベントは子供連れで参加できますか？</span>
+        <span class="faq-toggle">＋</span>
+      </div>
+      <div class="faq-a">ほとんどのイベントはお子様連れでご参加いただけますが、詳細はイベントお申し込み時にご確認ください。</div>
+    </div>
+
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-mark">Q</span>
+        <span class="faq-q-text">美容の仕事に興味がありますが、未経験でもできますか？</span>
+        <span class="faq-toggle">＋</span>
+      </div>
+      <div class="faq-a">はい、未経験の方でも大丈夫です。基礎から丁寧にお伝えするカリキュラムや支援体制を整備していますので、美容に関する知識や経験がなくてもスタートできます。実際に未経験から知識やスキルを身につけ、活躍しているメンバーがほとんどです。</div>
+    </div>
+    
+    <div class="faq-item" onclick="this.classList.toggle('open')">
+      <div class="faq-q">
+        <span class="faq-q-mark">Q</span>
+        <span class="faq-q-text">パートや会社員をしながらでもビジネス活動はできますか？</span>
+        <span class="faq-toggle">＋</span>
+      </div>
+      <div class="faq-a">はい、もちろんです。実際にパートや会社員として働きながら参加されているメンバーもいます。ご自身のペースで無理なく続けていただけます。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<div id="contact" class="contact-bg" style="margin-top: 80px;">
+  <div class="contact-wrap reveal">
+    <span class="section-label">Contact</span>
+    <h2 class="section-title">お問い合わせ</h2>
+    <div class="section-divider"></div>
+    <p style="font-size: 14px; color: var(--text-light); letter-spacing: 0.08em; line-height: 2;">
+      お問い合わせはお気軽にご連絡ください。
+    </p>
+    <div class="contact-info">
+      <div class="contact-row">
+        <span class="contact-row-label">Mail</span>
+        <span>makipom7@gmail.com</span>
+      </div>
+    </div>
+    <div class="contact-buttons">
+      <a href="mailto:makipom7@gmail.com" class="btn-contact">メールで問い合わせる</a>
+      <a href="https://line.me/ti/p/3o54HP-z5G" target="_blank" class="btn-contact-line">LINEで問い合わせる</a>
+    </div>
+  </div>
+</div>
+
+<!-- BACK TO TOP -->
+<a href="#" class="back-to-top" id="backToTop" aria-label="ページトップへ戻る">
+  <span class="back-to-top-arrow">↑</span>
+  <span>TOP</span>
+</a>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">永遠∞愛されママProject 広島</span>
+  <p>© 2026 Aisare Mama Project Hiroshima. All rights reserved.</p>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  // Back to top
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    backToTop.classList.toggle('visible', window.scrollY > 400);
+  });
+  backToTop.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('nav-mobile');
+  hamburger.addEventListener('click', function() {
+    const isOpen = hamburger.classList.toggle('open');
+    navMobile.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-expanded', isOpen);
+    navMobile.setAttribute('aria-hidden', !isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  navMobile.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      hamburger.classList.remove('open');
+      navMobile.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      navMobile.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Lightbox
+  function openLightbox(el) {
+    var src = el.querySelector('img').src;
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeLightbox();
+  });
+</script>
+</body>
+</html>
