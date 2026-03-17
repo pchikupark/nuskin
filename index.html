@@ -817,6 +817,8 @@
   }
   .nav-mobile ul li a:hover { color: var(--pink-deep); padding-left: 8px; }
 
+  .hero-image--mobile { display: none; }
+
   @media (max-width: 760px) {
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
@@ -825,6 +827,8 @@
     .hero-content { flex-direction: column; gap: 40px; }
     .hero-text { text-align: center; }
     .hero-image { width: 240px; height: 240px; }
+    .hero-image--mobile { display: block; margin: 20px auto 0; }
+    .hero-image--desktop { display: none; }
     .activity-grid { grid-template-columns: 1fr; }
     .event-gallery { grid-template-columns: repeat(2, 1fr); }
     .photo-gallery { grid-template-columns: repeat(2, 1fr); }
@@ -882,6 +886,9 @@
         永遠<span class="infinity">∞</span>愛されママ<br>Project 広島
       </h1>
       <p class="hero-subtitle">— すべてのママが、輝き続けるために —</p>
+      <div class="hero-image hero-image--mobile">
+        <img src="aisaremamalogo.jpg" alt="永遠∞愛されママProject広島">
+      </div>
       <div class="hero-divider"></div>
       <p class="hero-tagline">
         ありのままの自分を愛し、<br>
@@ -889,7 +896,7 @@
         最先端のBeauty＆Wellnessで実現。
       </p>
     </div>
-    <div class="hero-image">
+    <div class="hero-image hero-image--desktop">
       <img src="aisaremamalogo.jpg" alt="永遠∞愛されママProject広島">
     </div>
   </div>
