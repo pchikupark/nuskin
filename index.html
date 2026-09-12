@@ -486,7 +486,10 @@
   .event-record-photos {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
+    grid-template-rows: minmax(220px, auto) minmax(220px, auto);
+    grid-template-areas:
+      "poster photo-1"
+      "poster photo-2";
     gap: 3px;
   }
   .event-record-photo {
@@ -495,7 +498,8 @@
   }
   /* ポスター：左列2段分・全体を切り取らずに表示 */
   .event-record-photo--poster {
-    grid-row: span 2;
+    grid-area: poster;
+    min-height: 443px;
     background: var(--pink-lightest);
     display: flex;
     align-items: center;
@@ -510,6 +514,22 @@
     aspect-ratio: 4/3;
     cursor: pointer;
     position: relative;
+  }
+  .event-record-photo--clickable:nth-child(2) { grid-area: photo-1; }
+  .event-record-photo--clickable:nth-child(3) { grid-area: photo-2; }
+  .event-record-photos--poster-only {
+    grid-template-columns: minmax(0, 620px);
+    grid-template-rows: auto;
+    grid-template-areas: "poster";
+    justify-content: center;
+    padding: 24px;
+    background: var(--pink-lightest);
+  }
+  .event-record-photos--poster-only .event-record-photo--poster {
+    min-height: 0;
+    aspect-ratio: 3 / 4;
+    border-radius: 6px;
+    box-shadow: 0 12px 28px rgba(64, 39, 48, 0.12);
   }
   .event-record-photo--clickable img {
     width: 100%; height: 100%;
@@ -830,6 +850,13 @@
     .hero-image--mobile { display: block; margin: 20px auto 0; }
     .hero-image--desktop { display: none; }
     .activity-grid { grid-template-columns: 1fr; }
+    .event-record-photos {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto;
+      grid-template-areas: "poster" "photo-1" "photo-2";
+    }
+    .event-record-photo--poster { min-height: 0; aspect-ratio: 3 / 4; }
+    .event-record-photos--poster-only { padding: 16px; }
     .event-gallery { grid-template-columns: repeat(2, 1fr); }
     .photo-gallery { grid-template-columns: repeat(2, 1fr); }
     .members-grid { grid-template-columns: 1fr; gap: 48px; }
@@ -958,6 +985,16 @@
       </div>
     </div>
 
+    <div class="activity-card reveal">
+      <div class="activity-photo" id="activity-photo-4">
+        <img src="homecare_salon_anonymized.png" alt="ホームケアサロン">
+      </div>
+      <div class="activity-body">
+        <h3>ホームケアサロン</h3>
+        <p>自宅でゆったりと、肌・からだ・暮らしを見直すプライベートな時間。お悩みや理想を伺いながら、毎日のケア方法やアイテム選びを、体験を交えてご提案します。</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1031,6 +1068,23 @@
       ★ イベントを追加するときは、この <div class="event-record reveal"> ブロックを
          丸ごとコピーして下に貼り付けてください。
     -->
+    <div class="event-record reveal" onclick="this.classList.toggle('open')">
+      <div class="event-record-header">
+        <span class="event-record-header-title">2026年9月　秋のオンライン健康勉強会</span>
+        <span class="event-record-toggle">＋</span>
+      </div>
+      <div class="event-record-content">
+        <div class="event-record-photos event-record-photos--poster-only">
+          <div class="event-record-photo event-record-photo--poster">
+            <img src="event3_a.png" alt="秋のオンライン健康勉強会 案内チラシ">
+          </div>
+        </div>
+        <div class="event-record-body">
+          <p>2026年9月11日、Zoomにて開催。「生涯現役を叶えるカラダの土台作り」をテーマに、日本の健康と食の現状、不調の背景、情報に迷わない製品の選び方・使い方をお伝えしました。管理栄養士の視点を交え、毎日に取り入れやすい健康づくりのヒントを学ぶ時間となりました。</p>
+        </div>
+      </div>
+    </div>
+
     <div class="event-record reveal" onclick="this.classList.toggle('open')">
       <div class="event-record-header">
         <span class="event-record-header-title">2026年6月　大切な家族を守る！日用品選びの新基準</span>
