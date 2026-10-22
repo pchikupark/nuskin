@@ -1,12 +1,1 @@
-# Temporary maintenance: restore public access by reverting this commit.
-[[redirects]]
-  from = "/*"
-  to = "/maintenance.html"
-  status = 200
-  force = true
-
-[[headers]]
-  for = "/*"
-  [headers.values]
-    Cache-Control = "no-store"
-    X-Robots-Tag = "noindex, nofollow"
+# Normal public serving restored. No maintenance redirects or global noindex headers.
