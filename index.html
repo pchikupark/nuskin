@@ -85,6 +85,7 @@
   /* ─── HERO ─── */
   header {
     position: relative;
+    isolation: isolate;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -120,7 +121,6 @@
   }
   .hero-content {
     position: relative;
-    z-index: 1;
     display: flex;
     align-items: center;
     gap: 60px;
@@ -132,25 +132,33 @@
     text-align: center;
   }
   .hero-image {
+    position: relative;
     flex-shrink: 0;
-    width: 320px;
-    height: 320px;
-    border: 3px solid var(--pink-medium);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 8px 30px rgba(232,131,159,0.15);
+    width: 280px;
+    height: 280px;
+  }
+  .hero-image::before {
+    content: '';
+    position: absolute;
+    inset: -40px;
+    background: radial-gradient(ellipse at 56% 46%, #fff 0%, rgba(255,255,255,0.95) 26%, rgba(255,255,255,0.55) 48%, rgba(255,255,255,0) 72%);
+    pointer-events: none;
   }
   .hero-image img {
+    position: relative;
+    display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    /* Keep the white glow behind the logo while blending away its square. */
+    mix-blend-mode: multiply;
   }
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(22px); }
     to { opacity: 1; transform: translateY(0); }
   }
   .hero-eyebrow, .hero-title, .hero-subtitle, .hero-divider,
-  .hero-tagline, .hero-image {
+  .hero-tagline, .hero-image img {
     animation: fadeUp 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
   .hero-eyebrow { animation-delay: 0.05s; }
@@ -158,7 +166,7 @@
   .hero-subtitle { animation-delay: 0.35s; }
   .hero-divider { animation-delay: 0.45s; }
   .hero-tagline { animation-delay: 0.5s; }
-  .hero-image { animation-delay: 0.7s; }
+  .hero-image img { animation-delay: 0.7s; }
   .hero-eyebrow {
     font-size: 14px;
     letter-spacing: 0.35em;
@@ -284,6 +292,8 @@
     letter-spacing: 0.08em;
   }
   .philosophy-text p + p { margin-top: 1.6em; }
+  .philosophy-line { display: block; text-wrap: balance; }
+  .philosophy-phrase { display: inline-block; max-width: 100%; }
   .philosophy-quote {
     font-size: clamp(18px, 3vw, 28px);
     color: var(--pink-deep);
@@ -863,7 +873,7 @@
     header { padding-top: 100px; }
     .hero-content { flex-direction: column; gap: 40px; }
     .hero-text { text-align: center; }
-    .hero-image { width: 240px; height: 240px; }
+    .hero-image { width: 220px; height: 220px; }
     .hero-image--mobile { display: block; margin: 20px auto 0; }
     .hero-image--desktop { display: none; }
     .activity-grid { grid-template-columns: 1fr; }
@@ -965,9 +975,18 @@
     </div>
     <div class="philosophy-quote reveal">「愛されることは、自分から愛することから始まる」</div>
     <div class="philosophy-text reveal">
-      <p>「もっと頑張らなきゃ」「子どものためだから」——忙しい毎日の中で、気づけば自分のことを後回しにしてしまっているママへ。あなたが笑顔でいることが、家族にとっての一番の幸せだと私たちは考えています。</p>
-      <p>そんな想いから生まれたのが<br><strong style="color: var(--pink-deep);">「永遠∞愛されママProject広島」</strong>です。</p>
-      <p>私たちは「自分を愛することが、周りを幸せにする」という信念を持っています。最先端のBeauty＆Wellness、新しいワークスタイルを取り入れて、一歩踏み出すあなたと共に歩んでいきます。</p>
+      <p>
+        <span class="philosophy-line">「もっと頑張らなきゃ」「子どものためだから」——</span>
+        <span class="philosophy-line"><span class="philosophy-phrase">忙しい毎日の中で、</span><span class="philosophy-phrase">気づけば自分のことを</span><span class="philosophy-phrase">後回しにしてしまっているママへ。</span></span>
+        <span class="philosophy-line">あなたが笑顔でいることが、</span>
+        <span class="philosophy-line"><span class="philosophy-phrase">家族にとっての一番の幸せだと</span><span class="philosophy-phrase">私たちは考えています。</span></span>
+      </p>
+      <p>そんな想いから生まれたのが<br><strong style="color: var(--pink-deep);">「永遠∞愛されママProject広島」</strong><span class="philosophy-phrase">です。</span></p>
+      <p>
+        <span class="philosophy-line"><span class="philosophy-phrase">私たちは</span><span class="philosophy-phrase">「自分を愛することが、</span><span class="philosophy-phrase">周りを幸せにする」</span><span class="philosophy-phrase">という信念を持っています。</span></span>
+        <span class="philosophy-line"><span class="philosophy-phrase">最先端のBeauty＆Wellness、</span><span class="philosophy-phrase">新しいワークスタイルを取り入れて、</span></span>
+        <span class="philosophy-line">一歩踏み出すあなたと共に歩んでいきます。</span>
+      </p>
     </div>
   </section>
 </div>
