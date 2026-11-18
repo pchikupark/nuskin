@@ -121,7 +121,6 @@
   .hero-content {
     position: relative;
     z-index: 1;
-    animation: fadeUp 1.2s ease forwards;
     display: flex;
     align-items: center;
     gap: 60px;
@@ -147,9 +146,19 @@
     object-fit: cover;
   }
   @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
+    from { opacity: 0; transform: translateY(22px); }
     to { opacity: 1; transform: translateY(0); }
   }
+  .hero-eyebrow, .hero-title, .hero-subtitle, .hero-divider,
+  .hero-tagline, .hero-image {
+    animation: fadeUp 1.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero-eyebrow { animation-delay: 0.05s; }
+  .hero-title { animation-delay: 0.15s; }
+  .hero-subtitle { animation-delay: 0.35s; }
+  .hero-divider { animation-delay: 0.45s; }
+  .hero-tagline { animation-delay: 0.5s; }
+  .hero-image { animation-delay: 0.7s; }
   .hero-eyebrow {
     font-size: 14px;
     letter-spacing: 0.35em;
@@ -691,14 +700,17 @@
 
   /* ─── FAQ ─── */
   .faq-list { max-width: 720px; margin: 0 auto; }
-  .faq-item { border-bottom: 1px solid rgba(232,131,159,0.2); padding: 30px 0; cursor: pointer; }
-  .faq-q { display: flex; align-items: flex-start; gap: 16px; }
+  .faq-item { border-bottom: 1px solid rgba(232,131,159,0.2); padding: 30px 0; }
+  .faq-q { display: flex; align-items: flex-start; gap: 16px; width: 100%; border: 0; background: none; padding: 0; font: inherit; text-align: left; cursor: pointer; }
+  .faq-q:focus-visible { outline: 2px solid var(--pink-deep); outline-offset: 8px; }
   .faq-q-mark { font-size: 24px; color: var(--pink-deep); font-weight: 700; flex-shrink: 0; font-family: serif; line-height: 1.4; }
   .faq-q-text { font-family: 'Shippori Mincho', serif; font-size: 18px; color: var(--text-dark); letter-spacing: 0.08em; font-weight: 500; flex: 1; }
   .faq-toggle { font-size: 22px; color: var(--pink-main); flex-shrink: 0; transition: transform 0.3s; line-height: 1.4; }
   .faq-item.open .faq-toggle { transform: rotate(45deg); }
-  .faq-a { margin-top: 18px; font-size: 16px; color: var(--text-light); line-height: 2; padding-left: 38px; border-left: 2px solid var(--pink-light); display: none; }
-  .faq-item.open .faq-a { display: block; }
+  .faq-answer-panel { display: grid; grid-template-rows: 0fr; opacity: 0; visibility: hidden; transition: grid-template-rows 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s, visibility 0s 0.45s; }
+  .faq-answer-inner { min-height: 0; overflow: hidden; }
+  .faq-item.open .faq-answer-panel { grid-template-rows: 1fr; opacity: 1; visibility: visible; transition-delay: 0s; }
+  .faq-a { margin-top: 18px; font-size: 16px; color: var(--text-light); line-height: 2; padding-left: 38px; border-left: 2px solid var(--pink-light); }
 
   /* ─── CONTACT ─── */
   .contact-bg { background: linear-gradient(135deg, #fde8ef 0%, #fff5f7 100%); padding: 100px 20px; }
@@ -775,8 +787,13 @@
   .back-to-top-arrow { font-size: 18px; line-height: 1; }
 
   /* ─── REVEAL ─── */
-  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
-  .reveal.visible { opacity: 1; transform: none; }
+  .reveal { opacity: 1; translate: 0 0; }
+  .motion-ready .reveal {
+    transition: opacity 1s cubic-bezier(0.22, 1, 0.36, 1), translate 1s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s, box-shadow 0.4s;
+    transition-delay: var(--reveal-delay, 0s), var(--reveal-delay, 0s), 0s, 0s;
+  }
+  .motion-ready .reveal:not(.visible) { opacity: 0; translate: 0 32px; }
+  .motion-ready .activity-photo img { transform: translateY(var(--photo-shift, 0px)) scale(1.09); }
 
   /* ─── HAMBURGER ─── */
   .nav-hamburger {
@@ -864,6 +881,15 @@
   }
   @media (max-width: 480px) {
     .event-gallery { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 760px) {
+    .motion-ready .reveal { --reveal-delay: 0s !important; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .motion-ready .reveal:not(.visible) { opacity: 1; translate: 0 0; }
+    .motion-ready .activity-photo img { transform: none; }
   }
 </style>
 </head>
@@ -1210,59 +1236,83 @@
   </div>
   <div class="faq-list reveal">
   
-  <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">
+  <div class="faq-item">
+      <button class="faq-q" type="button" id="faq-question-1" aria-expanded="false" aria-controls="faq-answer-1">
         <span class="faq-q-mark">Q</span>
         <span class="faq-q-text">対象はママだけですか？</span>
-        <span class="faq-toggle">＋</span>
-      </div>
-      <div class="faq-a">いいえ、ママに限らず独身の方や男性の方も大歓迎です。私たちは、自分らしく輝きたいと願うすべての方を応援しています。ご夫婦やパートナーと一緒にご参加される方もいらっしゃいます。性別・年齢を問わず、お気軽にお問い
+        <span class="faq-toggle" aria-hidden="true">＋</span>
+      </button>
+      <div class="faq-answer-panel" id="faq-answer-1" role="region" aria-labelledby="faq-question-1" aria-hidden="true" inert>
+        <div class="faq-answer-inner">
+          <div class="faq-a">いいえ、ママに限らず独身の方や男性の方も大歓迎です。私たちは、自分らしく輝きたいと願うすべての方を応援しています。ご夫婦やパートナーと一緒にご参加される方もいらっしゃいます。性別・年齢を問わず、お気軽にお問い
   合わせください。</div>
+        </div>
+      </div>
     </div>
 
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">
+    <div class="faq-item">
+      <button class="faq-q" type="button" id="faq-question-2" aria-expanded="false" aria-controls="faq-answer-2">
         <span class="faq-q-mark">Q</span>
         <span class="faq-q-text">広島県外に住んでいますがサポートしてもらえますか？</span>
-        <span class="faq-toggle">＋</span>
+        <span class="faq-toggle" aria-hidden="true">＋</span>
+      </button>
+      <div class="faq-answer-panel" id="faq-answer-2" role="region" aria-labelledby="faq-question-2" aria-hidden="true" inert>
+        <div class="faq-answer-inner">
+          <div class="faq-a">もちろんです。LINEやZoom等を活用してオンラインのサポートが可能です。オンラインでご参加いただけるイベントもご用意しています。</div>
+        </div>
       </div>
-      <div class="faq-a">もちろんです。LINEやZoom等を活用してオンラインのサポートが可能です。オンラインでご参加いただけるイベントもご用意しています。</div>
     </div>
 
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">
+    <div class="faq-item">
+      <button class="faq-q" type="button" id="faq-question-3" aria-expanded="false" aria-controls="faq-answer-3">
         <span class="faq-q-mark">Q</span>
         <span class="faq-q-text">扱っている製品はどのような効果が期待できますか？</span>
-        <span class="faq-toggle">＋</span>
+        <span class="faq-toggle" aria-hidden="true">＋</span>
+      </button>
+      <div class="faq-answer-panel" id="faq-answer-3" role="region" aria-labelledby="faq-question-3" aria-hidden="true" inert>
+        <div class="faq-answer-inner">
+          <div class="faq-a">参加者からは「若く見られるようになった」「毎朝鏡を見るのが楽しみになった」「心身ともにより良くなった」などのご感想をいただいています。個人差はありますが、多くの方が内面・外見ともに変化を実感されています。</div>
+        </div>
       </div>
-      <div class="faq-a">参加者からは「若く見られるようになった」「毎朝鏡を見るのが楽しみになった」「心身ともにより良くなった」などのご感想をいただいています。個人差はありますが、多くの方が内面・外見ともに変化を実感されています。</div>
     </div>
 
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">
+    <div class="faq-item">
+      <button class="faq-q" type="button" id="faq-question-4" aria-expanded="false" aria-controls="faq-answer-4">
+        <span class="faq-q-mark">Q</span>
+        <span class="faq-q-text">ホームケアサロンはどこで開催していますか？</span>
+        <span class="faq-toggle" aria-hidden="true">＋</span>
+      </button>
+      <div class="faq-answer-panel" id="faq-answer-4" role="region" aria-labelledby="faq-question-4" aria-hidden="true" inert>
+        <div class="faq-answer-inner">
+          <div class="faq-a">現在は広島県で開催しています。詳しい開催場所については、LINEまたはメールでお気軽にお問い合わせください。</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-q" type="button" id="faq-question-5" aria-expanded="false" aria-controls="faq-answer-5">
         <span class="faq-q-mark">Q</span>
         <span class="faq-q-text">イベントは子供連れで参加できますか？</span>
-        <span class="faq-toggle">＋</span>
+        <span class="faq-toggle" aria-hidden="true">＋</span>
+      </button>
+      <div class="faq-answer-panel" id="faq-answer-5" role="region" aria-labelledby="faq-question-5" aria-hidden="true" inert>
+        <div class="faq-answer-inner">
+          <div class="faq-a">ほとんどのイベントはお子様連れでご参加いただけますが、詳細はイベントお申し込み時にご確認ください。</div>
+        </div>
       </div>
-      <div class="faq-a">ほとんどのイベントはお子様連れでご参加いただけますが、詳細はイベントお申し込み時にご確認ください。</div>
     </div>
 
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">
+    <div class="faq-item">
+      <button class="faq-q" type="button" id="faq-question-6" aria-expanded="false" aria-controls="faq-answer-6">
         <span class="faq-q-mark">Q</span>
-        <span class="faq-q-text">美容の仕事に興味がありますが、未経験でもできますか？</span>
-        <span class="faq-toggle">＋</span>
+        <span class="faq-q-text">美容や健康の仕事に興味がありますが、未経験でもできますか？</span>
+        <span class="faq-toggle" aria-hidden="true">＋</span>
+      </button>
+      <div class="faq-answer-panel" id="faq-answer-6" role="region" aria-labelledby="faq-question-6" aria-hidden="true" inert>
+        <div class="faq-answer-inner">
+          <div class="faq-a">はい、未経験の方でも大丈夫です。美容の基礎から学べるカリキュラムとサポート体制があり、初めての方も一歩ずつ知識やスキルを身につけられます。パートや会社員として働きながら活動しているメンバーもいます。お仕事や家庭とのバランスを大切にしながら、ご自身のペースで取り組んでいただけます。</div>
+        </div>
       </div>
-      <div class="faq-a">はい、未経験の方でも大丈夫です。基礎から丁寧にお伝えするカリキュラムや支援体制を整備していますので、美容に関する知識や経験がなくてもスタートできます。実際に未経験から知識やスキルを身につけ、活躍しているメンバーがほとんどです。</div>
-    </div>
-    
-    <div class="faq-item" onclick="this.classList.toggle('open')">
-      <div class="faq-q">
-        <span class="faq-q-mark">Q</span>
-        <span class="faq-q-text">パートや会社員をしながらでもビジネス活動はできますか？</span>
-        <span class="faq-toggle">＋</span>
-      </div>
-      <div class="faq-a">はい、もちろんです。実際にパートや会社員として働きながら参加されているメンバーもいます。ご自身のペースで無理なく続けていただけます。</div>
     </div>
 
   </div>
@@ -1303,13 +1353,84 @@
 </footer>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const reveals = document.querySelectorAll('.reveal');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  let revealObserver;
+  if ('IntersectionObserver' in window) {
+    document.querySelectorAll('.activity-grid, .members-grid').forEach(group => {
+      group.querySelectorAll('.reveal').forEach((card, index) => {
+        card.style.setProperty('--reveal-delay', `${(index % 3) * 0.14}s`);
+      });
     });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => io.observe(el));
+    revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => revealObserver.observe(el));
+    document.documentElement.classList.add('motion-ready');
+  }
+
+  // Move only visible activity photos, once per animation frame.
+  const activePhotos = new Set();
+  const photoFrames = document.querySelectorAll('.activity-photo');
+  let photoAnimationFrame = 0;
+  function updatePhotos() {
+    photoAnimationFrame = 0;
+    if (reducedMotion.matches || document.hidden) return;
+    const viewportHeight = window.innerHeight;
+    const distance = window.innerWidth <= 760 ? 4 : 8;
+    const positions = Array.from(activePhotos, frame => {
+      const rect = frame.getBoundingClientRect();
+      const progress = Math.max(-1, Math.min(1, (viewportHeight / 2 - rect.top - rect.height / 2) / ((viewportHeight + rect.height) / 2)));
+      return [frame, progress * distance];
+    });
+    positions.forEach(([frame, shift]) => frame.style.setProperty('--photo-shift', `${shift.toFixed(2)}px`));
+  }
+  function schedulePhotos() {
+    if (!photoAnimationFrame && !reducedMotion.matches && !document.hidden && activePhotos.size) {
+      photoAnimationFrame = requestAnimationFrame(updatePhotos);
+    }
+  }
+  if ('IntersectionObserver' in window) {
+    const photoObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) activePhotos.add(entry.target);
+        else activePhotos.delete(entry.target);
+      });
+      schedulePhotos();
+    });
+    photoFrames.forEach(frame => photoObserver.observe(frame));
+    window.addEventListener('scroll', schedulePhotos, { passive: true });
+    window.addEventListener('resize', schedulePhotos, { passive: true });
+    document.addEventListener('visibilitychange', schedulePhotos);
+  }
+  function syncMotionPreference() {
+    if (reducedMotion.matches) {
+      reveals.forEach(el => el.classList.add('visible'));
+      if (revealObserver) revealObserver.disconnect();
+      cancelAnimationFrame(photoAnimationFrame);
+      photoAnimationFrame = 0;
+      photoFrames.forEach(frame => frame.style.removeProperty('--photo-shift'));
+    } else schedulePhotos();
+  }
+  reducedMotion.addEventListener('change', syncMotionPreference);
+  syncMotionPreference();
+
+  // Native buttons keep FAQ opening and closing available to keyboards.
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const button = item.querySelector('.faq-q');
+    const panel = item.querySelector('.faq-answer-panel');
+    button.addEventListener('click', () => {
+      const isOpen = item.classList.toggle('open');
+      button.setAttribute('aria-expanded', String(isOpen));
+      panel.setAttribute('aria-hidden', String(!isOpen));
+      panel.inert = !isOpen;
+    });
+  });
 
   // Back to top
   const backToTop = document.getElementById('backToTop');
@@ -1318,7 +1439,7 @@
   });
   backToTop.addEventListener('click', function(e) {
     e.preventDefault();
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, behavior: reducedMotion.matches ? 'instant' : 'smooth' });
   });
 
   // Hamburger menu
